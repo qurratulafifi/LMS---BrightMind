@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Submission</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+
+<header class="header">
+    <section class="flex">
+        <a href="home.html" class="logo">BrightMind.</a>
+        <form action="search.html" method="post" class="search-form">
+            <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+            <button type="submit" class="fas fa-search"></button>
+        </form>
+        <div class="icons">
+            <div id="notifBtn" class="fas fa-bell"></div>
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="user-btn" class="fas fa-user"></div>
+            <div id="toggle-btn" class="fas fa-sun"></div>
+        </div>
+        <div class="profile">
+            <img id="sidebarProfileImage" src="images/default.jpg" class="image" alt="">
+            <h3 class="name" id="sidebarUserName">Guest</h3>
+            <a href="profile.html" class="btn">view profile</a>
+            <div class="flex-btn">
+                <a href="login.html" class="option-btn">login</a>
+                <a href="register.html" class="option-btn">register</a>
+            </div>
+        </div>
+    </section>
+</header>
+
+<div class="side-bar">
+    <div id="close-btn"><i class="fas fa-times"></i></div>
+    <div class="profile">
+        <img id="headerProfileImage" src="images/default.jpg" class="image" alt="">
+        <h3 class="name" id="headerUserName">Guest</h3>
+        <a href="profile.html" class="btn">view profile</a>
+    </div>
+    <nav class="navbar">
+        <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+        <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
+        <a href="quiz.html"><i class="fas fa-gamepad"></i><span>games</span></a>
+        <a href="forum.html"><i class="fas fa-chalkboard-user"></i><span>forum</span></a>
+    </nav>
+</div>
+
+<section class="watch-video">
+    <div class="video-container">
+        <div class="video">
+            <img src="images/thumb-1.png" alt="Course Preview" id="picture">
+        </div>
+        <h3 class="title">Create a Personal Portfolio Page</h3>
+        <p class="description">
+            Include your name, picture, bio, and favorite hobbies using headings, images, and paragraphs.
+        </p>
+        <br>
+        <div class="tutor">
+            <img src="images/pic-2.jpg" alt="">
+            <div>
+                <h3>teacher</h3>
+                <span></span>
+            </div>
+        </div>
+        <form action="" method="post" class="flex">
+            <a href="courses.html" class="inline-btn">view course</a>
+            <button><i class="far fa-heart"></i><span>like</span></button>
+        </form>
+    </div>
+</section>
+
+<section class="comments">
+    <h1 class="heading">Submit Your Work</h1>
+    <form id="submissionForm" class="add-comment enhanced-form" enctype="multipart/form-data">
+        <div class="form-group">
+            <input type="text" name="title" placeholder="Submission Title" required class="styled-input">
+            <input type="file" name="content_file" required class="styled-input-file">
+            <input type="hidden" name="courseName" id="courseInput">
+        </div>
+        <input type="submit" value="Submit" class="submit-btn">
+    </form>
+
+    <h1 class="heading">All Submissions</h1>
+    <div class="box-container" id="submissionList"></div>
+</section>
+
+<footer class="footer">
+    &copy; copyright @ 2025 by <span>BrightMind</span> | all rights reserved!
+</footer>
+
+<!-- === STYLE KHAS UNTUK FORM === -->
+<style>
+    .comment-box img {
+        max-width: 150px;
+        max-height: 150px;
+        object-fit: cover;
+        margin-top: 10px;
+    }
+    .enhanced-form {
+        background-color: #ffffff;
+        border: 1px solid #e0e0e0;
+        padding: 2rem;
+        border-radius: 0.8rem;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .styled-input {
+        padding: 1rem;
+        border: 1px solid #ccc;
+        border-radius: 0.4rem;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+    }
+
+    .styled-input:focus {
+        outline: none;
+        border-color: #af4cad;
+    }
+
+    .styled-input-file {
+        padding: 0.8rem;
+        border-radius: 0.4rem;
+        background: #f5f5f5;
+        border: 1px dashed #ccc;
+        font-size: 0.95rem;
+        cursor: pointer;
+    }
+
+    .submit-btn {
+        background-color: #bc3e8b;
+        color:#fff;
+        padding: 1rem;
+        font-size: 1rem;
+        border: none;
+        border-radius: 0.4rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #993b95;
+    }
+</style>
+
+<!-- === SCRIPT MAIN === -->
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    let course = (urlParams.get('course') || '').toLowerCase();
+
+
+    const courseTasks = {
+        html: { title: "Create a Personal Portfolio Page", description: "Include your name, picture, bio, and favorite hobbies using headings, images, and paragraphs.", preview: "images/thumb-1.png" },
+        css: { title: "Style a Blog Page", description: "Use external CSS to style a blog with headers, paragraphs, and images.", preview: "images/thumb-2.png" },
+        js: { title: "Create a Calculator", description: "Build a basic calculator that can do addition, subtraction, multiplication and division.", preview: "images/thumb-3.png" },
+        bootstrap: { title: "Responsive Layout", description: "Create a responsive page layout using Bootstrap grid system and components.", preview: "images/thumb-4.png" },
+        jquery: { title: "Interactive Gallery", description: "Use jQuery to create an interactive image gallery with click effects.", preview: "images/thumb-5.png" },
+        sass: { title: "SASS Variables + Nesting", description: "Create a stylesheet using SASS features like variables, nesting, and mixins.", preview: "images/thumb-6.png" },
+        php: { title: "Simple Login System", description: "Build a login system with username and password validation using PHP.", preview: "images/thumb-7.png" },
+        mysql: { title: "Student Database", description: "Design a MySQL database and write queries to manage student records.", preview: "images/thumb-8.png" },
+        react: { title: "Todo App", description: "Build a single-page React Todo app with add and delete functionality.", preview: "images/thumb-9.png" }
+    };
+
+    if (!course) {
+        const titleText = document.querySelector('.watch-video .title')?.innerText;
+        course = Object.keys(courseTasks).find(key =>
+            courseTasks[key].title.toLowerCase() === (titleText || '').toLowerCase()
+        );
+    }
+
+    const hw = courseTasks[course] || {
+        title: "Homework",
+        description: "No description found.",
+        preview: "images/default.png"
+    };
+
+    document.querySelector('.watch-video .title').innerText = hw.title;
+    document.querySelector('.watch-video .description').innerText = hw.description;
+    document.getElementById('picture').src = hw.preview;
+    document.getElementById("courseInput").value = course || '';
+
+
+    const userId = localStorage.getItem('user_id');
+
+    document.getElementById('submissionForm').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        formData.append('userId', localStorage.getItem('user_id'));
+
+        const response = await fetch('http://localhost:8080/api/content', {
+            method: 'POST',
+            body: formData
+        });
+
+        if (response.ok) {
+            alert('Submission added successfully!');
+            loadSubmissions();
+        } else {
+            alert('Failed to submit.');
+        }
+    });
+
+
+    async function loadSubmissions() {
+        const res = await fetch('http://localhost:8080/api/content');
+        const submissions = await res.json();
+        console.log("📦 All Submission:", submissions);
+
+        const container = document.getElementById('submissionList');
+        container.innerHTML = '';
+
+        // Dapatkan course dari URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const course = urlParams.get('course');
+        console.log("🎯 Course from URL:", course);
+
+        // Kalau course kosong, fallback ikut tajuk
+        let courseName = course;
+        if (!courseName) {
+            const titleText = document.querySelector('.watch-video .title')?.innerText;
+            const match = Object.entries(courseTasks).find(([key, val]) =>
+                val.title.toLowerCase() === (titleText || '').toLowerCase()
+            );
+            courseName = match?.[0] || '';
+        }
+        console.log("🔍 Course digunakan:", courseName);
+
+        const filtered = courseName
+            ? submissions.filter(c => (c.courseName || '').toLowerCase() === courseName.toLowerCase())
+            : submissions;
+
+        if (filtered.length === 0) {
+            container.innerHTML = `<p style="text-align:center;">😢 No submission added yet</p>`;
+            return;
+        }
+
+        filtered.forEach(c => {
+            const isMine = c.user?.id == Number(localStorage.getItem('user_id'));
+            const base = "http://localhost:8080";
+
+           //const fileLink = `http://localhost:8080/api/content/${c.content_file}`;
+            //const fileLink = `http://localhost:8080/api/content/${c.filename}`;
+            const fileLink = c.content_file.startsWith('http') ? c.content_file : `http://localhost:8080/api/content/${c.content_file}`;
+
+
+
+
+            container.innerHTML += `
+        <div class="box">
+            <div class="user">
+                <h3>${c.user?.name || 'User'}</h3>
+            </div>
+            <div class="comment-box">
+                <strong>${c.title}</strong><br>
+               <a href="${fileLink}" target="_blank">View Submission</a>
+
+            </div>
+            ${isMine ? `
+            <form class="flex-btn">
+                <button type="button" onclick="editSubmission(${c.id}, '${c.title}')" class="inline-option-btn">Edit Submission</button>
+                <button type="button" onclick="deleteSubmission(${c.id})" class="inline-delete-btn">Delete Submission</button>
+            </form>` : ''}
+        </div>`;
+        });
+    }
+
+
+
+    async function editSubmission(id, oldTitle) {
+        const newTitle = prompt("New title:", oldTitle);
+        if (!newTitle) return;
+        await fetch(`http://localhost:8080/api/content/${id}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id, title: newTitle })
+        });
+        loadSubmissions();
+    }
+
+    async function deleteSubmission(id) {
+        if (!confirm("Are you sure to delete this submission?")) return;
+        await fetch(`http://localhost:8080/api/content/${id}`, { method: 'DELETE' });
+        loadSubmissions();
+    }
+
+    loadSubmissions();
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const name = localStorage.getItem("name") || "Guest";
+        const pic = localStorage.getItem("profile_pic") || "default.jpg";
+        const imgPath = "/uploads/" + pic;
+
+        document.getElementById("headerProfileImage").src = imgPath;
+        document.getElementById("sidebarProfileImage").src = imgPath;
+        document.getElementById("headerUserName").textContent = name;
+        document.getElementById("sidebarUserName").textContent = name;
+
+        // Jika ada paparan dalam body profile:
+        document.getElementById("userName").textContent = name;
+        document.getElementById("userProfilePic").src = imgPath;
+    });
+</script>
+<script src="js/script.js"></script>
+</body>
+</html>
+
+

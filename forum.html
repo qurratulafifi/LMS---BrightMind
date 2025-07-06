@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Forum - BrightMind</title>
+    <link rel="stylesheet" href="css/forum.css">
+</head>
+<body>
+<header>
+    <h1>💬 BrightMind Forum</h1>
+    <a href="home.html" class="back-home-link">🏠 Back to Home</a>
+</header>
+<main class="forum-container">
+    <section class="new-thread">
+        <h2>Start a New Thread</h2>
+        <label for="username"></label><input type="text" id="username" placeholder="Your name">
+        <label for="thread-title"></label><input type="text" id="thread-title" placeholder="Thread title">
+        <label for="thread-content"></label><textarea id="thread-content" placeholder="What do you want to discuss?"></textarea>
+        <button onclick="createThread()">Post Thread</button>
+    </section>
+
+    <section class="thread-list">
+        <h2>🧵 Threads</h2>
+        <ul id="threads-container"></ul>
+    </section>
+</main>
+
+<script src="js/forum.js"></script>
+</body>
+</html>

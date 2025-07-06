@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Thread</title>
+    <link rel="stylesheet" href="css/forum.css">
+</head>
+<body>
+<header>
+    <h1>🧵 Thread Details</h1>
+    <a href="forum.html" class="back-link">← Back to Forum</a>
+</header>
+
+<main class="forum-container">
+    <section id="thread-detail"></section>
+
+    <section class="reply-form">
+        <h2>Reply to this Thread</h2>
+        <label for="reply-username"></label><input type="text" id="reply-username" placeholder="Your name">
+        <label for="reply-content"></label><textarea id="reply-content" placeholder="Your reply..."></textarea>
+        <button onclick="addReply()">Submit Reply</button>
+    </section>
+</main>
+
+<script src="js/thread.js"></script>
+</body>
+</html>
+

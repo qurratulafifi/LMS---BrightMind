@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Brain Battle Quiz</title>
+    <link rel="stylesheet" href="css/quiz.css" />
+</head>
+<body>
+<header>
+    <h1>🧠 Brain Battle</h1>
+    <a href="home.html" class="back-home-link">🏠 Back to Home</a>
+</header>
+<div class="quiz-container">
+
+    <!-- Start Screen -->
+    <div id="start-screen">
+        <input type="text" id="username" placeholder="Enter your name" required><br><br>
+
+        <!-- Topic Selection Grid -->
+        <div class="topic-grid">
+            <div class="topic-box" data-topic="html">HTML</div>
+            <div class="topic-box" data-topic="css">CSS</div>
+            <div class="topic-box" data-topic="javascript">JavaScript</div>
+            <div class="topic-box" data-topic="python">Python</div>
+            <div class="topic-box" data-topic="java">Java</div>
+            <div class="topic-box" data-topic="c++">C++</div>
+        </div>
+
+        <br>
+        <button onclick="startQuiz()">Start Quiz</button>
+    </div>
+
+    <!-- Quiz Box -->
+    <div id="quiz-box" style="display:none;">
+        <div id="question">Loading...</div>
+        <ul id="answers"></ul>
+        <p id="timer">Time Left: <span id="time">15</span>s</p>
+    </div>
+
+    <!-- Result Box (optional future use) -->
+    <div id="result" style="display: none;"></div>
+
+    <!-- Leaderboard Link -->
+    <a href="leaderboard.html" class="leaderboard-link">🏆 View Leaderboard</a>
+
+</div>
+
+<!-- Script -->
+<script src="js/quiz.js"></script>
+</body>
+</html>

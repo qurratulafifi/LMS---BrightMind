@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>home</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+   <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/chat.css">
+</head>
+<body>
+
+<header class="header">
+
+   <section class="flex">
+
+      <a href="home.html" class="logo">BrightMind.</a>
+
+      <form action="search.html" method="post" class="search-form">
+         <label>
+            <input type="text" name="search_box" required placeholder="search courses..." maxlength="100">
+         </label>
+         <button type="submit" class="fas fa-search"></button>
+      </form>
+
+      <div class="icons">
+         <div id="notifBtn" class="fas fa-bell"></div>
+         <div id="menu-btn" class="fas fa-bars"></div>
+         <div id="search-btn" class="fas fa-search"></div>
+         <div id="user-btn" class="fas fa-user"></div>
+         <div id="toggle-btn" class="fas fa-sun"></div>
+      </div>
+
+      <div class="profile">
+         <img id="sidebarProfileImage" src="images/default.jpg" class="image" alt="">
+         <h3 class="name" id="sidebarUserName">Guest</h3>
+
+         <a href="profile.html" class="btn">view profile</a>
+         <div class="flex-btn">
+            <a href="#" id="logout-btn" class="delete-btn">Logout</a>
+         </div>
+      </div>
+
+      <!--NOTIFICATION-->
+      <div id="notificationPanel" class="fixed top-16 right-6 z-50 hidden w-[28rem] max-w-full">
+         <div class="glass-card rounded-xl p-6 h-[85vh] flex flex-col">
+            <div class="glass-card rounded-xl p-6 h-[80vh] flex flex-col">
+               <!-- Header -->
+               <div class="flex justify-between items-center mb-6">
+                  <h2 class="text-lg font-semibold text-gray-800">Notifications</h2>
+                  <div class="flex items-center space-x-2">
+                     <button class="text-sm text-purple-600 font-medium">Mark all read</button>
+                     <span class="w-6 h-6 bg-purple-600 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                  </div>
+               </div>
+
+               <!-- Notifications List -->
+               <div class="flex-1 overflow-y-auto custom-scroll">
+                  <!-- Today -->
+                  <div class="mb-6">
+                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Today</h3>
+
+                     <!-- Item 1 -->
+                     <div class="mb-3 p-3 rounded-lg unread-notification animate-fade-in">
+                        <div class="flex space-x-3">
+                           <div class="notification-icon bg-purple-500">
+                              <i class="fas fa-book-open text-sm"></i>
+                           </div>
+                           <div class="flex-1">
+                              <div class="flex justify-between items-start">
+                                 <h4 class="font-medium text-gray-800">New Material Uploaded</h4>
+                                 <span class="text-xs text-gray-500">10:30 AM</span>
+                              </div>
+                              <p class="text-sm text-gray-600 mt-1">Week 5 lecture slides for Web Development
+                                 have been posted</p>
+                              <span class="inline-block mt-2 px-2 py-1 bg-purple-50 text-purple-600 text-xs rounded-md">CS-401</span>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Item 2 -->
+                     <div class="mb-3 p-3 rounded-lg unread-notification animate-fade-in">
+                        <div class="flex space-x-3">
+                           <div class="notification-icon bg-red-500">
+                              <i class="fas fa-exclamation-circle text-sm"></i>
+                           </div>
+                           <div class="flex-1">
+                              <div class="flex justify-between items-start">
+                                 <h4 class="font-medium text-gray-800">Assignment Deadline</h4>
+                                 <span class="text-xs text-gray-500">9:15 AM</span>
+                              </div>
+                              <p class="text-sm text-gray-600 mt-1">Database Project submission due tomorrow
+                                 at 11:59 PM</p>
+                              <span class="inline-block mt-2 px-2 py-1 bg-red-50 text-red-600 text-xs rounded-md">CS-403</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- Yesterday -->
+                  <div class="mb-6">
+                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">Yesterday</h3>
+
+                     <!-- Item 3 -->
+                     <div class="mb-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-150 animate-fade-in">
+                        <div class="flex space-x-3">
+                           <div class="notification-icon bg-green-500">
+                              <i class="fas fa-check-circle text-sm"></i>
+                           </div>
+                           <div class="flex-1">
+                              <div class="flex justify-between items-start">
+                                 <h4 class="font-medium text-gray-800">Grade Released</h4>
+                                 <span class="text-xs text-gray-500">4:45 PM</span>
+                              </div>
+                              <p class="text-sm text-gray-600 mt-1">Your marks for Quiz #3 are now
+                                 available</p>
+                              <span class="inline-block mt-2 px-2 py-1 bg-green-50 text-green-600 text-xs rounded-md">CS-405</span>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Item 4 - UPDATED -->
+                     <div class="mb-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-150 animate-fade-in">
+                        <div class="flex space-x-3">
+                           <div class="notification-icon bg-blue-500">
+                              <i class="fas fa-users text-sm"></i>
+                           </div>
+                           <div class="flex-1">
+                              <div class="flex justify-between items-start">
+                                 <h4 class="font-medium text-gray-800">New Group Message</h4>
+                                 <span class="text-xs text-gray-500">2:20 PM</span>
+                              </div>
+                              <p class="text-sm text-gray-600 mt-1">
+                                 <strong class="text-blue-600">Sarah:</strong> "Can we meet at 6 PM for the
+                                 final discussion?"
+                              </p>
+                              <div class="mt-2 flex items-center justify-between">
+                                 <span class="inline-block px-2 py-1 bg-blue-50 text-blue-600 text-xs rounded-md">Project Group</span>
+                                 <button class="text-xs text-blue-600 hover:underline focus:outline-none">
+                                    View Thread
+                                 </button>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+
+                  <!-- This Week -->
+                  <div>
+                     <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">This Week</h3>
+
+                     <!-- Item 5 -->
+                     <div class="mb-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-150 animate-fade-in">
+                        <div class="flex space-x-3">
+                           <div class="notification-icon bg-yellow-500">
+                              <i class="fas fa-calendar-alt text-sm"></i>
+                           </div>
+                           <div class="flex-1">
+                              <div class="flex justify-between items-start">
+                                 <h4 class="font-medium text-gray-800">Class Rescheduled</h4>
+                                 <span class="text-xs text-gray-500">Mon, 10:00 AM</span>
+                              </div>
+                              <p class="text-sm text-gray-600 mt-1">Mobile Development class moved from Friday
+                                 to Wednesday</p>
+                              <span class="inline-block mt-2 px-2 py-1 bg-yellow-50 text-yellow-600 text-xs rounded-md">CS-402</span>
+                           </div>
+                        </div>
+                     </div>
+
+                     <!-- Item 6 -->
+                     <div class="mb-3 p-3 rounded-lg hover:bg-gray-50 transition-colors duration-150 animate-fade-in">
+                        <div class="flex space-x-3">
+                           <div class="notification-icon bg-purple-500">
+                              <i class="fas fa-video text-sm"></i>
+                           </div>
+                           <div class="flex-1">
+                              <div class="flex justify-between items-start">
+                                 <h4 class="font-medium text-gray-800">WEBEX CLASSROOM</h4>
+                                 <span class="text-xs text-gray-500">Oct 23</span>
+                              </div>
+                              <p class="text-sm text-gray-600 mt-1">Please join your Webex classroom NOW!</p>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+   </section>
+
+</header>
+
+<div class="side-bar">
+   <div id="close-btn"><i class="fas fa-times"></i></div>
+   <div class="profile">
+      <img id="headerProfileImage" src="images/default.jpg" class="image" alt="">
+      <h3 class="name" id="headerUserName">Guest</h3>
+      <a href="profile.html" class="btn">view profile</a>
+   </div>
+   <nav class="navbar">
+      <a href="home.html"><i class="fas fa-home"></i><span>home</span></a>
+      <a href="courses.html"><i class="fas fa-graduation-cap"></i><span>courses</span></a>
+      <a href="quiz.html"><i class="fas fa-gamepad"></i><span>games</span></a>
+      <a href="forum.html"><i class="fas fa-chalkboard-user"></i><span>forum</span></a>
+   </nav>
+</div>
+<!--// COURSES DASHBOARD-->
+<section class="dashboard-container">
+
+   <!-- Main Course Area -->
+   <div class="main-courses scrollable-area">
+      <h1 class="heading">📚our courses</h1>
+      <div class="course-grid">
+         <!-- Course Box -->
+
+         <div class="course-card">
+            <img src="images/thumb-1.png" alt="">
+            <h3 class="title">HTML</h3>
+            <a href="content.html?course=html" class="inline-btn">view course</a>
+         </div>
+         <div class="course-card">
+            <img src="images/thumb-2.png" alt="">
+            <h3>CSS</h3>
+            <a href="content.html?course=css" class="inline-btn">view course</a>
+         </div>
+         <div class="course-card">
+            <img src="images/thumb-3.png" alt="">
+            <h3>JS</h3>
+            <a href="content.html?course=js" class="inline-btn">view course</a>
+         </div>
+         <div class="course-card">
+            <img src="images/thumb-4.png" alt="">
+            <h3>Bootstrap</h3>
+            <a href="content.html?course=boostrap" class="inline-btn">view course</a>
+         </div>
+         <div class="course-card">
+            <img src="images/thumb-5.png" alt="">
+            <h3>JQuery</h3>
+            <a href="content.html?course=jquery" class="inline-btn">view course</a>
+         </div>
+         <div class="course-card">
+            <img src="images/thumb-6.png" alt="">
+            <h3>SASS</h3>
+            <a href="content.html?course=sass" class="inline-btn">view course</a>
+         </div>
+         <!-- Add more as needed -->
+      </div>
+      <div class="more-btn">
+         <a href="courses.html" class="inline-option-btn">View All Courses</a>
+      </div>
+
+   </div>
+
+   <!-- Sidebar with Calendar and Leaderboard -->
+   <div class="right-sidebar">
+      <!-- Leaderboard -->
+      <div class="toggle-panel">
+         <div class="panel-header">
+            <h3>🏆 Leaderboard</h3>
+         </div>
+         <ul id="leaderboard-list" class="leaderboard-list">
+            <!-- JS Will Populate -->
+         </ul>
+         <a href="leaderboard.html" class="inline-btn">View Leaderboard</a>
+      </div>
+
+      <!-- Calendar -->
+      <div class="toggle-panel">
+         <div class="panel-header">
+            <h3>📅 Calendar</h3>
+         </div>
+         <div class="calendar-box" id="calendar"></div>
+      </div>
+   </div>
+</section>
+
+<div id="chat-popup" class="chat-popup hidden">
+   <div class="chat-header">
+      <span>Support Chat</span>
+      <button id="close-chat" class="chat-close">&times;</button>
+   </div>
+   <div class="chat-body" id="chat-body">
+      <div class="message from-them">Hello! How can we help you?</div>
+   </div>
+   <div class="chat-input">
+      <input type="text" id="chat-input" placeholder="Type a message..." />
+      <button id="send-chat">Send</button>
+   </div>
+</div>
+
+<button id="open-chat" class="chat-button">💬</button>
+
+<footer class="footer">
+
+   &copy; copyright @ 2025 by <span>BrightMind</span> | all rights reserved!
+
+</footer>
+
+<script>
+   function loadMiniLeaderboard() {
+      const leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
+      const sorted = leaderboard.sort((a, b) => b.score - a.score);
+      const list = document.getElementById("leaderboard-list");
+      list.innerHTML = "";
+
+      sorted.slice(0, 5).forEach((user, index) => {
+         const li = document.createElement("li");
+         li.textContent = `${index + 1}. ${user.username} - ${user.score} pts`;
+         list.appendChild(li);
+      });
+   }
+
+   //window.onload = loadMiniLeaderboard;
+   document.addEventListener("DOMContentLoaded", loadMiniLeaderboard);
+
+</script>
+
+<!--CALENDAR & NOTIFICATION-->
+
+<!-- custom js file link  -->
+<script>
+   const calendar = document.getElementById("calendar");
+   const date = new Date();
+   const year = date.getFullYear();
+   const month = date.getMonth();
+   const today = date.getDate();
+   const daysInMonth = new Date(year, month + 1, 0).getDate();
+   const firstDay = new Date(year, month, 1).getDay();
+   const dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+   dayNames.forEach(day => {
+      const div = document.createElement('div');
+      div.textContent = day;
+      div.style.fontWeight = 'bold';
+      calendar.appendChild(div);
+   });
+
+   for (let i = 0; i < firstDay; i++) {
+      const empty = document.createElement('div');
+      calendar.appendChild(empty);
+   }
+
+   for (let i = 1; i <= daysInMonth; i++) {
+      const day = document.createElement('div');
+      day.textContent = i;
+      if (i === today) day.classList.add('today');
+      calendar.appendChild(day);
+   }
+</script>
+<script>
+   const notifBtn = document.getElementById('notifBtn');
+   const panel = document.getElementById('notificationPanel');
+   const exitBtn = document.getElementById('exitBtn');
+
+   notifBtn.addEventListener('click', () => {
+      panel.classList.toggle('hidden');
+   });
+
+   if (exitBtn) {
+      exitBtn.addEventListener('click', () => {
+         panel.classList.add('hidden');
+      });
+   }
+   document.addEventListener('click', function (event) {
+      const isClickInside = panel.contains(event.target) || notifBtn.contains(event.target);
+      if (!isClickInside) {
+         panel.classList.add('hidden');
+      }
+   });
+
+</script>
+<script>
+   function createCalendarUI() {
+      const calendar = document.getElementById("calendar");
+      calendar.innerHTML = `
+    <div class="calendar-top">
+      <button id="prevMonth">←</button>
+      <span id="calendar-month-year">June 2025</span>
+      <button id="nextMonth">→</button>
+    </div>
+    <div class="calendar-weekdays">
+      <span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span>
+    </div>
+    <div id="calendar-days" class="calendar-days"></div>
+  `;
+   }
+
+
+   function renderCalendar(date) {
+      const monthYearLabel = document.getElementById("calendar-month-year");
+      const daysContainer = document.getElementById("calendar-days");
+
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      const today = new Date();
+
+      const firstDay = new Date(year, month, 1);
+      const lastDay = new Date(year, month + 1, 0);
+
+      const startDay = firstDay.getDay();
+      const totalDays = lastDay.getDate();
+
+      monthYearLabel.textContent = date.toLocaleString("default", {month: "long", year: "numeric"});
+
+      daysContainer.innerHTML = "";
+
+      for (let i = 0; i < startDay; i++) {
+         const blank = document.createElement("span");
+         blank.innerHTML = "&nbsp;";
+         daysContainer.appendChild(blank);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+         const dayEl = document.createElement("span");
+         dayEl.textContent = d;
+
+         if (
+                 d === today.getDate() &&
+                 month === today.getMonth() &&
+                 year === today.getFullYear()
+         ) {
+            dayEl.classList.add("today");
+         }
+
+         daysContainer.appendChild(dayEl);
+      }
+   }
+
+   let currentDate = new Date();
+   createCalendarUI();
+   renderCalendar(currentDate);
+
+   document.addEventListener("click", (e) => {
+      if (e.target.id === "prevMonth") {
+         currentDate.setMonth(currentDate.getMonth() - 1);
+         renderCalendar(currentDate);
+      } else if (e.target.id === "nextMonth") {
+         currentDate.setMonth(currentDate.getMonth() + 1);
+         renderCalendar(currentDate);
+      }
+   });
+</script>
+
+<!-- custom js file link  -->
+<script src="js/script.js"></script>
+<script src="js/chat.js"></script>
+
+<script>
+   // ✅ Cek login status
+   const userName = localStorage.getItem("name");
+   const profilePic = localStorage.getItem("profile_pic");
+
+   if (!userName || !profilePic) {
+      // ❌ Tiada info login → redirect ke login page
+      window.location.href = "login.html";
+   }
+</script>
+
+<script>
+   document.addEventListener("DOMContentLoaded", () => {
+      const name = localStorage.getItem("name") || "Guest";
+      const pic = localStorage.getItem("profile_pic") || "default.jpg";
+
+      const imgPath = "/uploads/" + pic;
+
+      document.getElementById("headerProfileImage").src = imgPath;
+      document.getElementById("sidebarProfileImage").src = imgPath;
+      document.getElementById("headerUserName").textContent = name;
+      document.getElementById("sidebarUserName").textContent = name;
+   });
+</script>
+<script>
+   document.getElementById('logout-btn').onclick = function (e) {
+      e.preventDefault();
+      if (confirm('Logout from this website?')) {
+         // Remove all login-related info
+         localStorage.removeItem('name');
+         localStorage.removeItem('email');
+         localStorage.removeItem('profile_pic');
+
+         // Optional: clear everything
+         // localStorage.clear();
+
+         // Redirect to login page
+         window.location.href = 'login.html';
+      }
+   };
+</script>
+
+</body>
+
+</html>
+

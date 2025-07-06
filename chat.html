@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="user-name" content="Guest" />
+    <meta name="user-role" content="user">
+
+    <title>Live Chat</title>
+    <link rel="stylesheet" href="css/chat.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body>
+<div class="chat-container">
+    <div class="chat-header">
+        <h3>Live Chat <span id="connectionStatus">(Connecting...)</span></h3>
+        <div class="search-container">
+            <input type="text" id="userSearch" placeholder="Search users...">
+            <i class="fas fa-search"></i>
+        </div>
+    </div>
+
+    <div class="chat-users-panel">
+        <h4>Online Users (<span id="onlineCount">0</span>)</h4>
+        <ul id="userListItems" class="user-list"></ul>
+    </div>
+
+    <div class="chat-panel">
+        <div class="messages-container" id="messageArea"></div>
+        <div class="input-container">
+            <input type="text" id="messageInput" placeholder="Type your message..." autocomplete="off">
+            <button id="sendButton"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sockjs-client@1.5.2/dist/sockjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+<script src="js/chat.js"></script>
+</body>
+</html>
